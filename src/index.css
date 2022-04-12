@@ -1,0 +1,114 @@
+body {
+  min-height: 100vh;
+}
+
+.main-app {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.main-app::before {
+  content: 'Words';
+  font-size: 3rem;
+  font-weight: 900;
+  top: 50px;
+  right: 25px;
+  z-index: 1;
+  position: absolute;
+  color: transparent;
+  background-clip: text;
+  background-image: linear-gradient(
+    90deg,
+    #fff 25%,
+    hsl(210, 11%, 97%),
+    hsl(210, 11%, 95%),
+    #fff 80%
+  );
+  opacity: 0.6;
+}
+
+.main-app::after {
+  content: 'Quiz';
+  font-size: 3rem;
+  font-weight: 900;
+  top: 0;
+  right: 25px;
+  z-index: 0;
+  position: absolute;
+  color: transparent;
+  background-clip: text;
+  background-image: linear-gradient(
+    90deg,
+    #fff 25%,
+    hsl(210, 11%, 97%),
+    hsl(210, 11%, 95%),
+    #fff 80%
+  );
+  opacity: 0.6;
+}
+
+.banner {
+  background-image: linear-gradient(
+    45deg,
+    hsl(110, 46%, 60%),
+    hsl(141, 40%, 54%),
+    hsl(163, 39%, 49%),
+    #34a0a4,
+    #168aad,
+    #1a759f,
+    #1e6091
+  );
+  background-size: 300%;
+  background-position: left;
+  animation: banner-animation 30s infinite alternate;
+}
+
+@keyframes banner-animation {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+}
+
+.bg-card {
+  background-color: rgba(255, 255, 255, 0.88);
+}
+
+.bg-question {
+  background: hsla(110, 40%, 60%, 0.35);
+  color: white;
+}
+
+.next-btn {
+  background: none;
+  padding: 0.5rem 1rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  color: white;
+  border: solid 2px currentColor;
+  border-radius: 9999px;
+  transition: all 200ms ease-in;
+}
+
+.next-btn:hover,
+.next-btn:focus {
+  color: black;
+}
+
+@media (max-width: 640px) {
+  .main-app::before {
+    top: 0;
+    right: 10px;
+  }
+  .main-app::after {
+    top: 0;
+    left: 10px;
+  }
+}

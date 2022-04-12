@@ -1,20 +1,23 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
 
-import randomWords from 'random-words';
+import { QuizProvider } from './context/QuizContext';
 
 import AppBorder from './components/AppBorder';
-import ScoreDisplay from './components/ScoreDisplay';
-import Questions from './components/Questions';
-import Answers from './components/Answers';
+import StatsDisplay from './components/StatsDisplay';
+import QuestionsSection from './components/QuestionsSection';
+import AnswersSection from './components/AnswersSection';
+import NextQuestionBtn from './components/NextQuestionBtn';
 
 function App() {
   return (
-    <AppBorder>
-      <ScoreDisplay />
-      <Questions />
-      <Answers />
-    </AppBorder>
+    <QuizProvider>
+      <AppBorder>
+        <StatsDisplay />
+        <QuestionsSection />
+        <AnswersSection />
+        <NextQuestionBtn />
+      </AppBorder>
+    </QuizProvider>
   );
 }
 
