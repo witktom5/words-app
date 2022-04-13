@@ -63,6 +63,7 @@ body {
   background-size: 300%;
   background-position: left;
   animation: banner-animation 30s infinite alternate;
+  min-height: 500px;
 }
 
 @keyframes banner-animation {
@@ -75,7 +76,7 @@ body {
 }
 
 .bg-card {
-  background-color: rgba(255, 255, 255, 0.88);
+  background-color: rgba(255, 255, 255, 0.85);
 }
 
 .bg-question {
@@ -83,7 +84,7 @@ body {
   color: white;
 }
 
-.next-btn {
+.btn-next {
   background: none;
   padding: 0.5rem 1rem;
   margin: 0 auto;
@@ -94,12 +95,36 @@ body {
   color: white;
   border: solid 2px currentColor;
   border-radius: 9999px;
-  transition: all 200ms ease-in;
+  transition: color 200ms;
 }
 
-.next-btn:hover,
-.next-btn:focus {
+.btn-next:hover,
+.btn-next:focus {
   color: black;
+}
+
+.custom-alert {
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+  top: 60px;
+  border-radius: 0.3em;
+  background-color: hsla(0, 0%, 100%, 0.75);
+  padding: 0 0.2em;
+}
+
+.custom-alert-success {
+  color: hsl(120, 100%, 30%);
+}
+
+.custom-alert-danger {
+  color: hsl(0, 60%, 50%);
+}
+
+@media (max-width: 991px) {
+  .banner {
+    min-height: 585px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -111,4 +136,30 @@ body {
     top: 0;
     left: 10px;
   }
+  .custom-alert {
+    right: 17px;
+    transform: none;
+    top: 94px;
+  }
 }
+
+////////bootstrap overrides
+
+@import '../node_modules/bootstrap/scss/functions';
+
+@import '../node_modules/bootstrap/scss/mixins';
+@import '../node_modules/bootstrap/scss/variables';
+
+.btn-info,
+.btn-info:hover,
+.btn-info:focus,
+.btn-info:active {
+  background-color: hsl(97, 75%, 32%);
+  color: white;
+  border-color: hsl(97, 75%, 32%);
+  box-shadow: 0 0 8px $danger;
+}
+
+@import '../node_modules/bootstrap/scss/root';
+@import '../node_modules/bootstrap/scss/reboot';
+@import '../node_modules/bootstrap/scss/type';

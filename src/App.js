@@ -1,9 +1,8 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-import { QuizProvider } from './context/QuizContext';
+import { QuizProvider } from './context/Quiz/QuizContext';
+import { AlertProvider } from './context/Alert/AlertContext';
 
 import AppBorder from './components/AppBorder';
-import StatsDisplay from './components/StatsDisplay';
+import InfoDisplay from './components/InfoDisplay';
 import QuestionsSection from './components/QuestionsSection';
 import AnswersSection from './components/AnswersSection';
 import NextQuestionBtn from './components/NextQuestionBtn';
@@ -11,12 +10,14 @@ import NextQuestionBtn from './components/NextQuestionBtn';
 function App() {
   return (
     <QuizProvider>
-      <AppBorder>
-        <StatsDisplay />
-        <QuestionsSection />
-        <AnswersSection />
-        <NextQuestionBtn />
-      </AppBorder>
+      <AlertProvider>
+        <AppBorder>
+          <InfoDisplay />
+          <QuestionsSection />
+          <AnswersSection />
+          <NextQuestionBtn />
+        </AppBorder>
+      </AlertProvider>
     </QuizProvider>
   );
 }

@@ -6,6 +6,7 @@ function Spinner() {
       src={spinner}
       alt='Loading...'
       style={{ width: '100px', margin: 'auto', display: 'block' }}
+      className='mt-5'
     />
   );
 }

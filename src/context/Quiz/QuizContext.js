@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect, useRef } from 'react';
+import AlertContext from '../Alert/AlertContext';
 
 const QuizContext = createContext();
 
@@ -8,6 +9,7 @@ export const QuizProvider = ({ children }) => {
   const [score, setScore] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [isAnswered, setIsAnswered] = useState(false);
+  const [isCorrectAnswer, setIsCorrectAnswer] = useState(null);
   const [lives, setLives] = useState(3);
   const [streak, setStreak] = useState(1);
 
@@ -20,15 +22,18 @@ export const QuizProvider = ({ children }) => {
   // get a single word and its definition from random word api
 
   const fetchWord = async () => {
-    const response = await fetch(`https://random-words-api.vercel.app/word`);
-    const data = await response.json();
-    const text = data[0].word;
-    const definition = data[0].definition;
+    // const response = await fetch(`https://random-words-api.vercel.app/word`);
+    // const data = await response.json();
+    // const text = data[0].word;
+    // const definition = data[0].definition;
 
     // placeholder for testing
-    // const rand = Math.random();
-    // const text = `placeholder${rand}`;
-    // const definition = `placeholder${rand}`;
+    await new Promise((resolve) => setTimeout(resolve, 100));
+
+    const rand = Math.random();
+    const text = `placeholder${rand}`;
+    const definition = `placeholder${rand}`;
+
     return { text, definition };
   };
 
@@ -36,6 +41,7 @@ export const QuizProvider = ({ children }) => {
 
   const makeAnswers = async () => {
     setIsAnswered(false);
+    setIsCorrectAnswer(null);
     setIsLoading(true);
     const answerOne = await fetchWord();
     const answerTwo = await fetchWord();
@@ -55,11 +61,13 @@ export const QuizProvider = ({ children }) => {
   const handleAnswerButton = (e, answer) => {
     if (isAnswered || lives === 0) return;
     if (answer.definition === question) {
+      setIsCorrectAnswer(true);
       e.target.classList.toggle('btn-success');
       setScore(score + 100 * streak);
       if (streak < 3) setStreak(streak + 1);
       setIsAnswered(true);
     } else {
+      setIsCorrectAnswer(false);
       setLives(lives - 1);
       setStreak(1);
       e.target.classList.toggle('btn-danger');
@@ -67,6 +75,12 @@ export const QuizProvider = ({ children }) => {
       if (lives === 1) return;
       setIsAnswered(true);
     }
+  };
+
+  const restart = () => {
+    setLives(3);
+    setScore(0);
+    makeAnswers();
   };
 
   return (
@@ -79,7 +93,9 @@ export const QuizProvider = ({ children }) => {
         isLoading,
         isAnswered,
         correctBtn,
+        isCorrectAnswer,
         setIsAnswered,
+        restart,
         handleAnswerButton,
         makeAnswers,
       }}
