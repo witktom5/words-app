@@ -25,7 +25,7 @@ function CardTop() {
   return (
     <div className='d-flex mt-4 align-items-center'>
       <div className='d-flex'>
-        <div className='d-flex flex-column me-3 align-items-center'>
+        <div className='d-flex flex-column me-2 align-items-center'>
           <h4 className='mb-0 text-light'>Score</h4>
           <div className='align-items-center my-2 py-2 px-4 me-auto shadow bg-card rounded'>
             <motion.div

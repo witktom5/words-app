@@ -122,15 +122,15 @@ body {
 
 .streak-display {
   position: absolute;
-  bottom: 20px;
+  bottom: 8px;
   left: 16px;
 }
 
 .streak-bg {
-  background-color: hsla(0, 0%, 15%, 0.7);
+  background-color: hsla(0, 0%, 30%, 0.7);
   border-radius: 0.25rem;
-  width: 54px;
-  height: 38px;
+  width: 52px;
+  height: 36px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -206,10 +206,18 @@ body {
   }
 }
 
+@media (max-width: 375px) {
+  .custom-alert {
+    right: 50%;
+    transform: translateX(50%);
+    top: 22px;
+    z-index: 1;
+    background: hsl(0, 0%, 95%);
+    width: fit-content;
+  }
+}
 ////////bootstrap overrides
-
 @import '../node_modules/bootstrap/scss/functions';
-
 @import '../node_modules/bootstrap/scss/mixins';
 @import '../node_modules/bootstrap/scss/variables';
 
