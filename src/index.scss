@@ -120,10 +120,12 @@ body {
   color: hsl(0, 60%, 50%);
 }
 
+.card-bottom {
+  margin-top: auto;
+}
+
 .streak-display {
-  position: absolute;
-  bottom: 8px;
-  left: 16px;
+  position: relative;
 }
 
 .streak-bg {
@@ -176,18 +178,21 @@ body {
 }
 
 @media (max-width: 991px) {
-  .banner {
-    min-height: 585px;
-  }
   .custom-alert {
     position: absolute;
     right: 50%;
     transform: translateX(50%);
     top: 20px;
   }
+  .banner {
+    min-height: 540px;
+  }
 }
 
 @media (max-width: 640px) {
+  .banner {
+    min-height: 540px;
+  }
   .main-app::before {
     top: 0;
     right: 10px;
@@ -202,7 +207,9 @@ body {
     top: 94px;
   }
   .btn-next {
-    margin: 0 0 0 auto;
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
   }
 }
 
@@ -214,6 +221,13 @@ body {
     z-index: 1;
     background: hsl(0, 0%, 95%);
     width: fit-content;
+  }
+  .main-app::after,
+  .main-app::before {
+    font-size: 2em;
+  }
+  .btn-next {
+    font-size: 0.9em;
   }
 }
 ////////bootstrap overrides

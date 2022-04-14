@@ -23,7 +23,7 @@ function CardBottom() {
   };
 
   return (
-    <div className='d-flex align-items-center'>
+    <div className='d-flex align-items-center card-bottom'>
       <StreakDisplay />
       {lives > 0 ? (
         <button

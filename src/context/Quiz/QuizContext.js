@@ -30,7 +30,6 @@ export const QuizProvider = ({ children }) => {
       const definition = data[0].definition;
       return { text, definition };
     } catch {
-      // placeholder
       const rand = Math.random();
       const text = `api is down...${rand}`;
       const definition = `api is down...${rand}`;

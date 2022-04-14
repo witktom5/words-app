@@ -18,7 +18,7 @@ function Answers() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
-          <div className='py-3 my-3 w-100 rounded rounded-3 mx-auto bg-card shadow'>
+          <div className='py-0 py-md-3 my-1 my-md-3 w-100 rounded rounded-3 mx-auto bg-card shadow'>
             <div className='card-body mx-3 px-3'>
               <div className='row mb'>
                 <div className='col-12 col-lg-6 mb-2'>
