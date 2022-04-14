@@ -1,6 +1,6 @@
 # Words App
 
-[Live](sensational-haupia-506264.netlify.app)
+[Live](https://sensational-haupia-506264.netlify.app/)
 
 ## Overview
 
