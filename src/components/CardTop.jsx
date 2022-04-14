@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 import Alert from './Alert';
 
-function ScoreDisplay() {
+function CardTop() {
   const { score, lives, isCorrectAnswer } = useContext(QuizContext);
   const { setAlert } = useContext(AlertContext);
 
@@ -18,13 +18,15 @@ function ScoreDisplay() {
     } else if (isCorrectAnswer === false && lives <= 0) {
       setAlert('Game Over', 'danger');
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isCorrectAnswer]);
 
   return (
     <div className='d-flex mt-4 align-items-center'>
       <div className='d-flex'>
         <div className='d-flex flex-column me-3 align-items-center'>
-          <h3 className='mb-0 text-light'>Score</h3>
+          <h4 className='mb-0 text-light'>Score</h4>
           <div className='align-items-center my-2 py-2 px-4 me-auto shadow bg-card rounded'>
             <motion.div
               key={score}
@@ -41,8 +43,8 @@ function ScoreDisplay() {
             </motion.div>
           </div>
         </div>
-        <div className='d-flex flex-column align-items-center'>
-          <h3 className='mb-0 text-light'>Lives</h3>
+        <div className='d-flex flex-column mx-3 align-items-center'>
+          <h4 className='mb-0 text-light'>Lives</h4>
           <div className='align-items-center my-2 py-2 px-4 me-auto shadow bg-card rounded'>
             <motion.div
               key={lives}
@@ -59,9 +61,10 @@ function ScoreDisplay() {
             </motion.div>
           </div>
         </div>
+
         <Alert />
       </div>
     </div>
   );
 }
-export default ScoreDisplay;
+export default CardTop;

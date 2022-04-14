@@ -2,20 +2,20 @@ import { QuizProvider } from './context/Quiz/QuizContext';
 import { AlertProvider } from './context/Alert/AlertContext';
 
 import AppBorder from './components/AppBorder';
-import InfoDisplay from './components/InfoDisplay';
+import CardTop from './components/CardTop';
 import QuestionsSection from './components/QuestionsSection';
 import AnswersSection from './components/AnswersSection';
-import NextQuestionBtn from './components/NextQuestionBtn';
+import CardBottom from './components/CardBottom';
 
 function App() {
   return (
     <QuizProvider>
       <AlertProvider>
         <AppBorder>
-          <InfoDisplay />
+          <CardTop />
           <QuestionsSection />
           <AnswersSection />
-          <NextQuestionBtn />
+          <CardBottom />
         </AppBorder>
       </AlertProvider>
     </QuizProvider>

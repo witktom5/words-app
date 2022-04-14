@@ -9,13 +9,12 @@ function Alert() {
     <AnimatePresence>
       {alert !== null && (
         <motion.div
-          key='questionAnimation'
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
           <div
-            className={`custom-alert shadow fw-bold fs-1 custom-alert-${alert.type}`}
+            className={`custom-alert bg-card shadow fw-bold fs-1 custom-alert-${alert.type}`}
           >
             {alert.msg}
           </div>

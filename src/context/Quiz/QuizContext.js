@@ -1,40 +1,41 @@
 import { createContext, useState, useEffect, useRef } from 'react';
-import AlertContext from '../Alert/AlertContext';
 
 const QuizContext = createContext();
 
 export const QuizProvider = ({ children }) => {
   const [answers, setAnswers] = useState([]);
-  const [question, setQuestion] = useState('First question placeholder');
+  const [question, setQuestion] = useState('');
   const [score, setScore] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [isAnswered, setIsAnswered] = useState(false);
   const [isCorrectAnswer, setIsCorrectAnswer] = useState(null);
   const [lives, setLives] = useState(3);
-  const [streak, setStreak] = useState(1);
+  const [streak, setStreak] = useState(0);
 
   const correctBtn = useRef(null);
 
   useEffect(() => {
     makeAnswers();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // get a single word and its definition from random word api
 
   const fetchWord = async () => {
-    // const response = await fetch(`https://random-words-api.vercel.app/word`);
-    // const data = await response.json();
-    // const text = data[0].word;
-    // const definition = data[0].definition;
-
-    // placeholder for testing
-    await new Promise((resolve) => setTimeout(resolve, 100));
-
-    const rand = Math.random();
-    const text = `placeholder${rand}`;
-    const definition = `placeholder${rand}`;
-
-    return { text, definition };
+    try {
+      const response = await fetch(`https://random-words-api.vercel.app/word`);
+      const data = await response.json();
+      const text = data[0].word;
+      const definition = data[0].definition;
+      return { text, definition };
+    } catch {
+      // placeholder
+      const rand = Math.random();
+      const text = `api is down...${rand}`;
+      const definition = `api is down...${rand}`;
+      return { text, definition };
+    }
   };
 
   // set up a question: get 4 words and take definition of one to act as a question
@@ -63,13 +64,17 @@ export const QuizProvider = ({ children }) => {
     if (answer.definition === question) {
       setIsCorrectAnswer(true);
       e.target.classList.toggle('btn-success');
-      setScore(score + 100 * streak);
+      if (streak > 1) {
+        setScore(score + 100 * streak);
+      } else {
+        setScore(score + 100);
+      }
       if (streak < 3) setStreak(streak + 1);
       setIsAnswered(true);
     } else {
       setIsCorrectAnswer(false);
       setLives(lives - 1);
-      setStreak(1);
+      setStreak(0);
       e.target.classList.toggle('btn-danger');
       correctBtn.current.classList.toggle('btn-info');
       if (lives === 1) return;
@@ -94,6 +99,7 @@ export const QuizProvider = ({ children }) => {
         isAnswered,
         correctBtn,
         isCorrectAnswer,
+        streak,
         setIsAnswered,
         restart,
         handleAnswerButton,
