@@ -23,7 +23,7 @@ function CardTop() {
   }, [isCorrectAnswer]);
 
   return (
-    <div className='d-flex mt-4 align-items-center'>
+    <div className='d-flex mt-2 mt-md-4 align-items-center'>
       <div className='d-flex'>
         <div className='d-flex flex-column me-2 align-items-center'>
           <h4 className='mb-0 text-light'>Score</h4>
