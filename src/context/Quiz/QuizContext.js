@@ -23,14 +23,14 @@ export const QuizProvider = ({ children }) => {
   // get a single word and its definition from random word api
 
   const fetchWord = async () => {
+    const rand = Math.random(); // random number to diffrentiate "questions" to display when api is down
     try {
       const response = await fetch(`https://random-words-api.vercel.app/word`);
       const data = await response.json();
-      const text = data[0].word;
-      const definition = data[0].definition;
+      const text = data[0].word || `api is down...${rand}`;
+      const definition = data[0].definition || `api is down...${rand}`;
       return { text, definition };
     } catch {
-      const rand = Math.random();
       const text = `api is down...${rand}`;
       const definition = `api is down...${rand}`;
       return { text, definition };
