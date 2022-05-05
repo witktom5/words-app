@@ -1,6 +1,6 @@
 # Words App
 
-[Live](https://sensational-haupia-506264.netlify.app/)
+[Live](https://quiz-words.netlify.app)
 
 ## Overview
 
